@@ -1,19 +1,29 @@
-// classnames 라이브러리 사용
+// 방법4. inline-style + CSS moudle + classnames 라이브러리 
 import React from 'react';
+import classNames from 'classnames';
 import logoBlack from 'static/images/logo_black.png';
-import classNames from 'classnames/bind';
-import styles from './KakaoHead.sass';
+import styles from './KakaoHead.module.sass';
 const cx = classNames.bind(styles);
 
 const KakaoHead = () => {
+  const head_event = {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    right: '0',
+    zIdnex: '20',
+    minWidth: '1260px',
+    height: '100px'
+  };
+
   return (
-    <>  
-      <div id="kakaoHead" className={cx('head_event')}>
-      <h1 className={cx('tit_logo')}>
-        <a href="#none" id="kakaoServiceLogo" className={cx('link_logo')}>
-          <img src={logoBlack} width="183" height="53" className={cx('img_thumb')} alt="Black Desert Online REMASTERED" />
-        </a>
-      </h1>
+    <>
+      <div id="kakaoHead" style={head_event}>
+        <h1 style={{position:"absolute",top:"23px",left:"50px"}}>
+          <a href="#none" id="kakaoServiceLogo" style={{display:"block"}}>
+            <img src={logoBlack} width="183" height="53" style={{verticalAlign:"top"}} alt="Black Desert Online REMASTERED" />
+          </a>
+        </h1>
 
         <strong className={cx('screen_out')}>서비스 바로가기</strong>
         <ul className={cx('list_util')}>
@@ -24,7 +34,8 @@ const KakaoHead = () => {
             <a href="#none" className={cx('img_comm', 'link_today')}>이벤트 페이지 오늘하루 그만보기</a>
           </li>
         </ul>
-      </div>      
+      </div>
+      <hr className={cx('hide')} />
     </>
   );
 };
